@@ -1,32 +1,57 @@
 {
-  "name": "",
-  "type": "module",
+  "name": "envoyos",
   "version": "0.0.1",
-  "engines": {
-    "node": ">=22.12.0"
+  "description": "",
+  "keywords": [],
+  "homepage": "https://github.com/envoy1084/envoyos#readme",
+  "bugs": {
+    "url": "https://github.com/envoy1084/envoyos/issues"
   },
+  "license": "Apache-2.0",
+  "author": "Vedant Chainani <vedant@envoy1084.xyz>",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/envoy1084/envoyos.git"
+  },
+  "type": "module",
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "generate-types": "wrangler types"
+    "generate-types": "wrangler types",
+    "prepare": "lefthook install",
+    "format": "oxfmt",
+    "format:check": "oxfmt --check",
+    "format:write": "oxfmt",
+    "lint": "oxlint --fix",
+    "lint:check": "oxlint",
+    "lint:write": "oxlint --fix"
   },
   "dependencies": {
-    "@astrojs/cloudflare": "^13.7.0",
-    "@astrojs/mdx": "^6.0.3",
-    "@astrojs/react": "^5.0.7",
-    "@astrojs/sitemap": "^3.7.3",
-    "@tailwindcss/vite": "^4.3.1",
-    "@types/react": "^19.2.17",
-    "@types/react-dom": "^19.2.3",
-    "astro": "^6.4.7",
-    "react": "^19.2.7",
-    "react-dom": "^19.2.7",
-    "tailwindcss": "^4.3.1",
-    "wrangler": "^4.103.0"
+    "@astrojs/cloudflare": "13.7.0",
+    "@astrojs/mdx": "6.0.3",
+    "@astrojs/react": "5.0.7",
+    "@astrojs/sitemap": "3.7.3",
+    "@commitlint/cli": "21.0.2",
+    "@commitlint/config-conventional": "21.0.2",
+    "@tailwindcss/vite": "4.3.1",
+    "@types/react": "19.2.17",
+    "@types/react-dom": "19.2.3",
+    "astro": "6.4.8",
+    "lefthook": "2.1.9",
+    "oxfmt": "0.55.0",
+    "oxlint": "1.70.0",
+    "react": "19.2.7",
+    "react-dom": "19.2.7",
+    "tailwindcss": "4.3.1",
+    "typescript": "6.0.3",
+    "wrangler": "4.103.0"
   },
   "overrides": {
     "vite": "^7"
+  },
+  "engines": {
+    "node": ">=22.12.0"
   }
 }

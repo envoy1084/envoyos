@@ -1,1 +1,18 @@
 @import "tailwindcss";
+
+:root {
+  --background: lch(2.43% 0.49 255.48);
+}
+
+@theme inline {
+  --color-background: var(--background);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}

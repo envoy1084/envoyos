@@ -1,4 +1,7 @@
+minimumReleaseAge: 1440
+blockExoticSubdeps: true
 allowBuilds:
   esbuild: true
+  lefthook: true
   sharp: true
   workerd: true
