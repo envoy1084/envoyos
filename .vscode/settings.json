@@ -11,6 +11,12 @@
     "*.css": "tailwindcss"
   },
   "js/ts.tsdk.path": "node_modules/typescript/lib",
-  "tailwindCSS.classAttributes": ["class", "className", "ngClass", "tw", "class:list"],
+  "tailwindCSS.classAttributes": [
+    "class",
+    "className",
+    "ngClass",
+    "tw",
+    "class:list"
+  ],
   "tailwindCSS.classFunctions": ["tw", "clsx", "cva"]
 }

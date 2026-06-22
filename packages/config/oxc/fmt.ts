@@ -28,7 +28,14 @@ export const oxFmtConfig = defineConfig({
     customGroups: [
       {
         groupName: "framework",
-        elementNamePattern: ["react", "react/*", "react-dom", "react-dom/*", "next", "next/*"],
+        elementNamePattern: [
+          "react",
+          "react/*",
+          "react-dom",
+          "react-dom/*",
+          "next",
+          "next/*",
+        ],
       },
       {
         groupName: "tanstack",

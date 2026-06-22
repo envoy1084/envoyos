@@ -3,11 +3,11 @@
   "version": "0.1.0",
   "type": "module",
   "scripts": {
-    "dev": "astro dev",
-    "build": "astro build",
-    "preview": "astro preview",
     "astro": "astro",
-    "generate-types": "wrangler types"
+    "build": "astro build",
+    "dev": "astro dev",
+    "generate-types": "wrangler types",
+    "preview": "astro preview"
   },
   "dependencies": {
     "@astrojs/cloudflare": "13.7.0",

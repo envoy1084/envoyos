@@ -6,5 +6,14 @@ export const baseOxLintConfig = defineConfig({
     perf: "error",
     suspicious: "error",
   },
-  plugins: ["eslint", "typescript", "unicorn", "oxc", "import", "jsdoc", "node", "promise"],
+  plugins: [
+    "eslint",
+    "typescript",
+    "unicorn",
+    "oxc",
+    "import",
+    "jsdoc",
+    "node",
+    "promise",
+  ],
 });
