@@ -2,6 +2,7 @@
 
 :root {
   --app-bg: #08090a;
+  --page-bg: var(--app-bg);
 
   /* Content Colors */
   --content-primary: #ffffff; /* Primary headings, active nav text, selected menu item text, and text on brand buttons. */
@@ -57,44 +58,85 @@
   --accent-cyan: #00b8cb; /* Cyan status/category accent and charts. */
   --accent-yellow: #f0bf00; /* Warning status foreground and chart accent. */
 
+  /* Semantic Colors */
+  --text-default: var(--content-primary);
+  --text-muted: var(--content-tertiary);
+  --text-subtle: var(--content-quaternary);
+  --text-disabled: var(--content-disabled);
+  --text-inverse: var(--content-inverse);
+  --border-default: var(--line-default);
+  --border-muted: var(--line-subtle);
+  --border-strong: var(--line-strong);
+  --border-control: var(--line-control);
+  --focus-ring: var(--brand);
+  --focus-ring-offset: var(--app-bg);
+  --link: var(--content-primary);
+  --link-hover: var(--brand-muted);
+  --status-info: var(--accent-blue);
+  --status-warning: var(--accent-yellow);
+  --status-success: var(--accent-green);
+  --status-danger: var(--accent-red);
+  --destructive: var(--accent-red);
+  --destructive-hover: var(--accent-red-hover);
+
   /* Shadows */
-  --shadow-popover: /* Popover/tooltip shadow and 0.5px overlay outline. */
+  --elevation-popover: /* Popover/tooltip shadow and 0.5px overlay outline. */
     0 3px 8px #0000001f, 0 2px 5px #0000001f, 0 1px 1px #0000001f,
     0 0 0 0.5px var(--line-strong);
-  --shadow-menu: /* Dropdown/select/command menu shadow and 0.5px overlay outline. */
+  --elevation-menu: /* Dropdown/select/command menu shadow and 0.5px overlay outline. */
     0 3px 8px #0000001f, 0 2px 5px #0000001f, 0 1px 1px #0000001f,
     0 0 0 0.5px var(--line-strong);
-  --shadow-modal: /* Dialog/modal elevation shadow. */
+  --elevation-modal: /* Dialog/modal elevation shadow. */
     0 4px 40px #00000019, 0 3px 20px #0000001f, 0 3px 12px #0000001f,
     0 2px 8px #0000001f, 0 1px 1px #0000001f;
-  --shadow-card: inset 0 1px 0 #ffffff0b; /* Card top hairline highlight; no outer shadow so card border stays 0.5px. */
-  --shadow-focus: 0 0 0 1px var(--brand); /* Keyboard focus outline for controls and buttons. */
-  --shadow-control:
+  --elevation-card: inset 0 1px 0 #ffffff0b; /* Card top hairline highlight; no outer shadow so card border stays 0.5px. */
+  --elevation-focus: 0 0 0 1px var(--brand); /* Keyboard focus outline for controls and buttons. */
+  --elevation-control:
     0px 4px 4px -1px #0000000a, 0px 1px 1px 0px #00000014; /* Subtle input/button/select elevation. */
 
   /* Font Weights */
   --font-weight-light: 300; /* Light display/body text when explicitly needed. */
-  --font-weight-normal: 450; /* Linear-like default text weight. */
+  --font-weight-normal: 400; /* Default text weight matching the loaded Inter weights. */
   --font-weight-medium: 500; /* Labels, button text, and card titles. */
   --font-weight-semibold: 600; /* Strong headings and emphasized labels. */
   --font-weight-bold: 700; /* Rare bold display text. */
 
   /* Easing */
-  --ease-linear: cubic-bezier(
+  --motion-ease-out: cubic-bezier(
     0.19,
     1,
     0.22,
     1
-  ); /* Default enter/hover/focus transition curve. */
+  ); /* Smooth Linear-like enter/hover/focus curve. */
+  --motion-ease-standard: cubic-bezier(0.2, 0, 0, 1);
+  --motion-ease-emphasized: cubic-bezier(0.16, 1, 0.3, 1);
+  --motion-ease-linear: var(--motion-ease-out);
+  --ease-linear: var(
+    --motion-ease-out
+  ); /* Backward-compatible alias for existing CSS. */
   --duration-linear-fast: 100ms; /* Very small hover/focus transitions. */
   --duration-linear: 150ms; /* Default UI transition duration. */
   --duration-linear-slow: 250ms; /* Larger menu/dialog/layout transition duration. */
+  --duration-fast: var(--duration-linear-fast);
+  --duration-normal: var(--duration-linear);
+  --duration-slow: var(--duration-linear-slow);
 
   --radius: 0.7rem; /* Legacy base radius for Tailwind radius scale exports. */
   --radius-control: 8px; /* Inputs, select triggers, menu items, buttons, and compact controls. */
   --radius-surface: 10px; /* Cards, grouped rows, and contained repeated surfaces. */
   --radius-popover: 12px; /* Popovers, dropdown panels, select panels, dialogs, and overlays. */
   --radius-rounded: 9999px; /* Pills, avatars, toggles, and fully round controls. */
+
+  /* Layout */
+  --layout-container-sm: 640px;
+  --layout-container-md: 768px;
+  --layout-container-lg: 1024px;
+  --layout-container-xl: 1120px;
+  --layout-container-2xl: 1280px;
+  --header-height: 4rem;
+  --section-y-sm: 4rem;
+  --section-y: 6rem;
+  --section-y-lg: 8rem;
 
   --spacing: 0.25rem; /* Tailwind spacing base. */
 
@@ -113,6 +155,7 @@
     "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Courier New", monospace;
 
   --color-app-bg: var(--app-bg);
+  --color-page-bg: var(--page-bg);
 
   --color-content-primary: var(--content-primary);
   --color-content-secondary: var(--content-secondary);
@@ -153,14 +196,34 @@
   --color-brand-subtle: var(--brand-subtle);
   --color-brand-muted: var(--brand-muted);
   --color-accent-blue: var(--accent-blue);
+  --color-accent-blue-hover: var(--accent-blue-hover);
   --color-accent-green: var(--accent-green);
+  --color-accent-green-hover: var(--accent-green-hover);
   --color-accent-orange: var(--accent-orange);
+  --color-accent-orange-hover: var(--accent-orange-hover);
   --color-accent-red: var(--accent-red);
+  --color-accent-red-hover: var(--accent-red-hover);
   --color-accent-cyan: var(--accent-cyan);
   --color-accent-yellow: var(--accent-yellow);
+  --color-text-default: var(--text-default);
+  --color-text-muted: var(--text-muted);
+  --color-text-subtle: var(--text-subtle);
+  --color-text-disabled: var(--text-disabled);
+  --color-text-inverse: var(--text-inverse);
+  --color-border-default: var(--border-default);
+  --color-border-muted: var(--border-muted);
+  --color-border-strong: var(--border-strong);
+  --color-border-control: var(--border-control);
+  --color-focus-ring: var(--focus-ring);
+  --color-focus-ring-offset: var(--focus-ring-offset);
+  --color-link: var(--link);
+  --color-link-hover: var(--link-hover);
+  --color-status-info: var(--status-info);
   --color-status-warning: var(--status-warning);
   --color-status-success: var(--status-success);
   --color-status-danger: var(--status-danger);
+  --color-destructive: var(--destructive);
+  --color-destructive-hover: var(--destructive-hover);
 
   --color-selection: var(--selection-bg);
 
@@ -175,14 +238,37 @@
   --default-border-width: 0.5px;
 
   --text-sm: 0.8125rem;
+
+  --shadow-popover: var(--elevation-popover);
+  --shadow-menu: var(--elevation-menu);
+  --shadow-modal: var(--elevation-modal);
+  --shadow-card: var(--elevation-card);
+  --shadow-focus: var(--elevation-focus);
+  --shadow-control: var(--elevation-control);
+
+  --ease-out: var(--motion-ease-out);
+  --ease-standard: var(--motion-ease-standard);
+  --ease-emphasized: var(--motion-ease-emphasized);
+  --ease-linear: var(--motion-ease-linear);
+
+  --container-sm: var(--layout-container-sm);
+  --container-md: var(--layout-container-md);
+  --container-lg: var(--layout-container-lg);
+  --container-xl: var(--layout-container-xl);
+  --container-2xl: var(--layout-container-2xl);
+  --spacing-header: var(--header-height);
+  --spacing-section-sm: var(--section-y-sm);
+  --spacing-section: var(--section-y);
+  --spacing-section-lg: var(--section-y-lg);
 }
 
 @layer base {
   * {
-    @apply border-line-default outline-brand/50 antialiased;
+    @apply border-border-default outline-focus-ring/50 antialiased;
   }
   body {
-    @apply bg-app-bg font-inter text-content-primary relative;
+    @apply bg-page-bg font-inter text-text-default relative;
+    font-weight: var(--font-weight-normal);
   }
 
   button:not(:disabled),
@@ -196,8 +282,30 @@
   input,
   textarea,
   select {
+    transition-property:
+      color, background-color, border-color, outline-color,
+      text-decoration-color, fill, stroke, opacity, box-shadow, transform;
     transition-duration: var(--duration-linear);
-    transition-timing-function: var(--ease-linear);
+    transition-timing-function: var(--motion-ease-out);
+  }
+
+  a {
+    color: inherit;
+    text-decoration-color: transparent;
+  }
+
+  a:hover {
+    text-decoration-color: currentColor;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--focus-ring);
+    outline-offset: 2px;
+  }
+
+  :disabled,
+  [aria-disabled="true"] {
+    cursor: not-allowed;
   }
 
   ::selection {
