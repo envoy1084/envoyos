@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "composite": true,
+    // Emit
+    "declaration": true,
+    "declarationMap": true,
+    // Environment neutral
+    "lib": ["ES2022"],
+    "module": "ESNext",
+    // Bundler
+    "moduleResolution": "Bundler",
+    "target": "ES2022",
+    "types": []
+  },
+  "extends": "./base.json"
+}

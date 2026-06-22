@@ -1,6 +1,6 @@
 {
   "name": "envoyos",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "",
   "keywords": [],
   "homepage": "https://github.com/envoy1084/envoyos#readme",
@@ -15,43 +15,27 @@
   },
   "type": "module",
   "scripts": {
-    "dev": "astro dev",
-    "build": "astro build",
-    "preview": "astro preview",
-    "astro": "astro",
-    "generate-types": "wrangler types",
-    "prepare": "lefthook install",
+    "build": "turbo build",
+    "commitlint": "commitlint --edit",
+    "dev": "turbo dev",
     "format": "oxfmt",
     "format:check": "oxfmt --check",
     "format:write": "oxfmt",
     "lint": "oxlint --fix",
     "lint:check": "oxlint",
-    "lint:write": "oxlint --fix"
+    "lint:write": "oxlint --fix",
+    "prepare": "lefthook install",
+    "test": "turbo test"
   },
-  "dependencies": {
-    "@astrojs/cloudflare": "13.7.0",
-    "@astrojs/mdx": "6.0.3",
-    "@astrojs/react": "5.0.7",
-    "@astrojs/sitemap": "3.7.3",
+  "devDependencies": {
     "@commitlint/cli": "21.0.2",
     "@commitlint/config-conventional": "21.0.2",
-    "@tailwindcss/vite": "4.3.1",
-    "@types/react": "19.2.17",
-    "@types/react-dom": "19.2.3",
-    "astro": "6.4.8",
+    "@envoyos/config": "workspace:*",
     "lefthook": "2.1.9",
-    "oxfmt": "0.55.0",
-    "oxlint": "1.70.0",
-    "react": "19.2.7",
-    "react-dom": "19.2.7",
-    "tailwindcss": "4.3.1",
-    "typescript": "6.0.3",
-    "wrangler": "4.103.0"
+    "oxfmt": "catalog:",
+    "oxlint": "catalog:",
+    "turbo": "2.9.18",
+    "typescript": "catalog:"
   },
-  "overrides": {
-    "vite": "^7"
-  },
-  "engines": {
-    "node": ">=22.12.0"
-  }
+  "packageManager": "pnpm@11.3.0"
 }

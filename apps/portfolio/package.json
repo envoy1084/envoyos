@@ -1,0 +1,35 @@
+{
+  "name": "@envoyos/portfolio",
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro",
+    "generate-types": "wrangler types"
+  },
+  "dependencies": {
+    "@astrojs/cloudflare": "13.7.0",
+    "@astrojs/mdx": "6.0.3",
+    "@astrojs/react": "5.0.7",
+    "@astrojs/sitemap": "3.7.3",
+    "@tailwindcss/vite": "4.3.1",
+    "astro": "6.4.8",
+    "react": "catalog:",
+    "react-dom": "catalog:",
+    "tailwindcss": "4.3.1",
+    "wrangler": "4.103.0"
+  },
+  "devDependencies": {
+    "@types/react": "catalog:",
+    "@types/react-dom": "catalog:",
+    "typescript": "catalog:"
+  },
+  "overrides": {
+    "vite": "^7"
+  },
+  "engines": {
+    "node": ">=22.12.0"
+  }
+}

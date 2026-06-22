@@ -1,5 +1,23 @@
 minimumReleaseAge: 1440
+minimumReleaseAgeExclude:
+  - "@namera-ai/*"
+  - "@effect/*"
+  - "effect"
 blockExoticSubdeps: true
+packages:
+  - apps/*
+  - packages/*
+catalog:
+  "react": "19.2.7"
+  "react-dom": "19.2.7"
+  "@types/react": "19.2.17"
+  "@types/react-dom": "19.2.3"
+  "oxfmt": "0.55.0"
+  "oxlint": "1.70.0"
+  "@types/node": "26.0.0"
+  "tsdown": "0.22.3"
+  "typescript": "6.0.3"
+  "tsx": "4.22.4"
 allowBuilds:
   esbuild: true
   lefthook: true

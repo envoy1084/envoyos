@@ -1,0 +1,35 @@
+{
+  "name": "@envoyos/config",
+  "version": "0.1.0",
+  "files": [
+    "./dist",
+    "./tsconfig"
+  ],
+  "type": "module",
+  "exports": {
+    "./tsconfig/app/next": "./tsconfig/next.json",
+    "./tsconfig/app/react": "./tsconfig/react.json",
+    "./tsconfig/app/vite": "./tsconfig/vite.json",
+    "./tsconfig/library/browser": "./tsconfig/browser-library.json",
+    "./tsconfig/library/bun": "./tsconfig/bun-library.json",
+    "./tsconfig/library/neutral": "./tsconfig/library.json",
+    "./tsconfig/library/node": "./tsconfig/node-library.json",
+    "./tsconfig/library/react": "./tsconfig/react-library.json",
+    "./tsdown": "./tsdown/shared.ts",
+    "./vitest": "./vitest/shared.ts",
+    "./oxc/fmt": "./oxc/fmt.ts",
+    "./oxc/base": "./oxc/base.ts",
+    "./oxc/react": "./oxc/react.ts",
+    "./oxc/next": "./oxc/next.ts",
+    "./oxc/test": "./oxc/test.ts"
+  },
+  "scripts": {},
+  "devDependencies": {
+    "oxfmt": "catalog:",
+    "oxlint": "catalog:",
+    "tsdown": "catalog:",
+    "typescript": "catalog:",
+    "vite-tsconfig-paths": "6.1.1",
+    "vitest": "4.1.7"
+  }
+}
