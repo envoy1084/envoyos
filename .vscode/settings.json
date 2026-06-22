@@ -18,5 +18,11 @@
     "tw",
     "class:list"
   ],
-  "tailwindCSS.classFunctions": ["tw", "clsx", "cva"]
+  "tailwindCSS.experimental.configFile": {
+    "apps/portfolio/src/styles/global.css": ["apps/**", "packages/**"]
+  },
+  "tailwindCSS.classFunctions": ["tw", "clsx", "cva"],
+  "[astro]": {
+    "editor.defaultFormatter": "astro-build.astro-vscode"
+  }
 }

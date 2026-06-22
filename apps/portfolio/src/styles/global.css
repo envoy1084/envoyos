@@ -1,18 +1,225 @@
 @import "tailwindcss";
 
 :root {
-  --background: lch(2.43% 0.49 255.48);
+  --app-bg: #08090a;
+
+  /* Content Colors */
+  --content-primary: #ffffff; /* Primary headings, active nav text, selected menu item text, and text on brand buttons. */
+  --content-secondary: #e2e3e5; /* Metadata, descriptions, placeholders, inactive sidebar labels, and icon-only button color. */
+  --content-tertiary: #939496; /* Metadata, descriptions, placeholders, inactive sidebar labels, and icon-only button color. */
+  --content-quaternary: #555557; /* Lowest-emphasis copy and disabled-adjacent labels. */
+  --content-disabled: #545557; /* Explicit disabled text/icon color when opacity is not enough. */
+  --content-inverse: #070707; /* Dark text on very light status chips or generated bright accents. */
+
+  /* Line Colors */
+  --line-subtle: #18191b; /* Very quiet separators outside card rows. */
+  --line-default: #1f2022; /* Default panel, table, menu, and layout border color. */
+  --line-strong: #353739; /* Strong overlay outline, tooltip border, and emphasized focus-adjacent border. */
+  --line-card: #252629; /* Outer settings/form card border; edit if card top edge looks too bright or too dark. */
+  --line-divider: #252629; /* Card row dividers and card-internal separators. */
+  --line-control: #2f3031; /* Normal input/select/button outline outside cards. */
+  --line-control-card: #353639; /* Input/select outline inside settings/form cards. */
+  --line-control-card-hover: #393f49; /* Input/select hover outline inside settings/form cards. */
+  --line-control-hover: #333841; /* Input/select/button outline on hover. */
+  --line-translucent: #ffffff22; /* Translucent border for light-on-dark overlays and rare glass-like elements. */
+  --line-selected: #ffffff28; /* Stronger selected outline for future selected cards or dense list controls. */
+
+  /* Surface Colors */
+  --surface-base: #181a1c; /* Generic filled surface for skeletons, badges, and low-emphasis chips. */
+  --surface-card: #171718; /* Settings cards and form cards; edit this if card bg mismatches Linear. */
+  --surface-card-footer: #18191a; /* Card footer/action strip background when a card has a separated footer. */
+  --surface-hover: #1b1c1d; /* Generic non-menu hover fill for buttons, table rows, tabs, and sidebar-adjacent controls. */
+  --surface-active: #212123; /* Pressed/active generic fill for rows and selected neutral controls. */
+  --surface-raised: #232325; /* Raised neutral controls such as surface select triggers and muted buttons. */
+  --surface-overlay: #1b1b1c; /* Dropdown, popover, tooltip, dialog, command, and select popup background. */
+
+  /* Control Element Colors */
+  --control-bg: #1d1d1e; /* Normal input/select/search control background outside cards. */
+  --control-card-bg: #00000000; /* Input/select background when nested inside settings/form cards. */
+  --control-hover: #1d1d1e; /* Reserved control hover fill for future controls that need a separate bg hover. */
+  --control-active: #2c2c2e; /* Pressed select/button fill, especially small surface controls. */
+
+  /* Brand Colors */
+  --brand: #5e6ad2; /* Primary CTA background, checked switch bg, checkbox bg, and focus ring. */
+  --brand-hover: #6b75df; /* Primary button hover background. */
+  --brand-active: #636fd7; /* Active brand state for future segmented controls or pressed primary buttons. */
+  --brand-pressed: #727ce6; /* Brightest brand pressed/focused state. */
+  --brand-subtle: #17182c; /* Subtle brand-tinted backgrounds for future selected panels. */
+  --brand-muted: #adbaff; /* Muted brand text/icon accent on dark brand-subtle surfaces. */
+  --accent-blue: #55ccff; /* Blue status/category accent, charts, and future info indicators. */
+  --accent-blue-hover: #67d9ff; /* Blue accent hover/active state. */
+  --accent-green: #26a544; /* Success/online/positive status accent. */
+  --accent-green-hover: #37b24f; /* Success hover/active state. */
+  --accent-orange: #ff7235; /* Warning-like orange accent and selected row tint source. */
+  --accent-orange-hover: #ff7e40; /* Orange hover/active state. */
+  --accent-red: #f34e52; /* Error/destructive base accent. */
+  --accent-red-hover: #ff5b5d; /* Destructive hover and status-danger foreground. */
+  --accent-cyan: #00b8cb; /* Cyan status/category accent and charts. */
+  --accent-yellow: #f0bf00; /* Warning status foreground and chart accent. */
+
+  /* Shadows */
+  --shadow-popover: /* Popover/tooltip shadow and 0.5px overlay outline. */
+    0 3px 8px #0000001f, 0 2px 5px #0000001f, 0 1px 1px #0000001f,
+    0 0 0 0.5px var(--line-strong);
+  --shadow-menu: /* Dropdown/select/command menu shadow and 0.5px overlay outline. */
+    0 3px 8px #0000001f, 0 2px 5px #0000001f, 0 1px 1px #0000001f,
+    0 0 0 0.5px var(--line-strong);
+  --shadow-modal: /* Dialog/modal elevation shadow. */
+    0 4px 40px #00000019, 0 3px 20px #0000001f, 0 3px 12px #0000001f,
+    0 2px 8px #0000001f, 0 1px 1px #0000001f;
+  --shadow-card: inset 0 1px 0 #ffffff0b; /* Card top hairline highlight; no outer shadow so card border stays 0.5px. */
+  --shadow-focus: 0 0 0 1px var(--brand); /* Keyboard focus outline for controls and buttons. */
+  --shadow-control:
+    0px 4px 4px -1px #0000000a, 0px 1px 1px 0px #00000014; /* Subtle input/button/select elevation. */
+
+  /* Font Weights */
+  --font-weight-light: 300; /* Light display/body text when explicitly needed. */
+  --font-weight-normal: 450; /* Linear-like default text weight. */
+  --font-weight-medium: 500; /* Labels, button text, and card titles. */
+  --font-weight-semibold: 600; /* Strong headings and emphasized labels. */
+  --font-weight-bold: 700; /* Rare bold display text. */
+
+  /* Easing */
+  --ease-linear: cubic-bezier(
+    0.19,
+    1,
+    0.22,
+    1
+  ); /* Default enter/hover/focus transition curve. */
+  --duration-linear-fast: 100ms; /* Very small hover/focus transitions. */
+  --duration-linear: 150ms; /* Default UI transition duration. */
+  --duration-linear-slow: 250ms; /* Larger menu/dialog/layout transition duration. */
+
+  --radius: 0.7rem; /* Legacy base radius for Tailwind radius scale exports. */
+  --radius-control: 8px; /* Inputs, select triggers, menu items, buttons, and compact controls. */
+  --radius-surface: 10px; /* Cards, grouped rows, and contained repeated surfaces. */
+  --radius-popover: 12px; /* Popovers, dropdown panels, select panels, dialogs, and overlays. */
+  --radius-rounded: 9999px; /* Pills, avatars, toggles, and fully round controls. */
+
+  --spacing: 0.25rem; /* Tailwind spacing base. */
+
+  --selection-bg: #9394961a; /* Browser text selection and AI/editor selection overlay. */
 }
 
 @theme inline {
-  --color-background: var(--background);
+  --font-inter:
+    "Inter", "ui-sans-serif", "system-ui", "-apple-system",
+    "BlinkMacSystemFont", "Segoe UI", "Roboto", "Helvetica Neue", "Arial",
+    "Noto Sans", "sans-serif", "Apple Color Emoji", "Segoe UI Emoji",
+    "Segoe UI Symbol", "Noto Color Emoji";
+
+  --font-geist-mono:
+    "Geist Mono", "Menlo", "Monaco", "Lucida Console", "Liberation Mono",
+    "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Courier New", monospace;
+
+  --color-app-bg: var(--app-bg);
+
+  --color-content-primary: var(--content-primary);
+  --color-content-secondary: var(--content-secondary);
+  --color-content-tertiary: var(--content-tertiary);
+  --color-content-quaternary: var(--content-quaternary);
+  --color-content-disabled: var(--content-disabled);
+  --color-content-inverse: var(--content-inverse);
+
+  --color-line-subtle: var(--line-subtle);
+  --color-line-default: var(--line-default);
+  --color-line-strong: var(--line-strong);
+  --color-line-card: var(--line-card);
+  --color-line-divider: var(--line-divider);
+  --color-line-control: var(--line-control);
+  --color-line-control-card: var(--line-control-card);
+  --color-line-control-card-hover: var(--line-control-card-hover);
+  --color-line-control-hover: var(--line-control-hover);
+  --color-line-translucent: var(--line-translucent);
+  --color-line-selected: var(--line-selected);
+
+  --color-surface-base: var(--surface-base);
+  --color-surface-card: var(--surface-card);
+  --color-surface-card-footer: var(--surface-card-footer);
+  --color-surface-raised: var(--surface-raised);
+  --color-surface-hover: var(--surface-hover);
+  --color-surface-active: var(--surface-active);
+  --color-surface-overlay: var(--surface-overlay);
+
+  --color-control: var(--control-bg);
+  --color-control-card: var(--control-card-bg);
+  --color-control-hover: var(--control-hover);
+  --color-control-active: var(--control-active);
+
+  --color-brand: var(--brand);
+  --color-brand-hover: var(--brand-hover);
+  --color-brand-active: var(--brand-active);
+  --color-brand-pressed: var(--brand-pressed);
+  --color-brand-subtle: var(--brand-subtle);
+  --color-brand-muted: var(--brand-muted);
+  --color-accent-blue: var(--accent-blue);
+  --color-accent-green: var(--accent-green);
+  --color-accent-orange: var(--accent-orange);
+  --color-accent-red: var(--accent-red);
+  --color-accent-cyan: var(--accent-cyan);
+  --color-accent-yellow: var(--accent-yellow);
+  --color-status-warning: var(--status-warning);
+  --color-status-success: var(--status-success);
+  --color-status-danger: var(--status-danger);
+
+  --color-selection: var(--selection-bg);
+
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
+
+  --default-border-width: 0.5px;
+
+  --text-sm: 0.8125rem;
 }
 
 @layer base {
   * {
-    @apply border-border outline-ring/50;
+    @apply border-line-default outline-brand/50 antialiased;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply bg-app-bg font-inter text-content-primary relative;
   }
+
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+
+  button,
+  [role="button"],
+  a,
+  input,
+  textarea,
+  select {
+    transition-duration: var(--duration-linear);
+    transition-timing-function: var(--ease-linear);
+  }
+
+  ::selection {
+    color: var(--content-primary);
+    background-color: var(--selection-bg);
+  }
+}
+
+.root {
+  isolation: isolate;
+}
+
+@utility heading-gradient {
+  font-feature-settings:
+    "salt" on,
+    "ss02" on;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  -webkit-text-stroke-width: 0.5px;
+  -webkit-text-stroke-color: #fff;
+  background: linear-gradient(162deg, #fff 25.49%, #939db8 110.77%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  filter: drop-shadow(0px 2px 2px rgba(0, 0, 0, 0.9));
 }
