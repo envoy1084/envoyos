@@ -4,12 +4,14 @@ import "../styles/global.css";
 
 import { Font } from "astro:assets";
 import { RootSeo } from "../components/seo";
+import PostHog from "./posthog.astro";
 ---
 
 <!doctype html>
 <html lang="en" class="scroll-smooth">
   <head>
     <RootSeo />
+    <PostHog />
     <Font cssVariable="--font-inter" preload />
     <Font cssVariable="--font-geist-mono" preload />
   </head>
@@ -21,10 +23,8 @@ import { RootSeo } from "../components/seo";
       Skip to content
     </a>
 
-    <div class="root min-h-dvh bg-page-bg text-text-default">
-      <main id="main" class="min-h-[calc(100dvh-var(--header-height))]">
-        <slot />
-      </main>
-    </div>
+    <main id="main" class="root">
+      <slot />
+    </main>
   </body>
 </html>

@@ -18,6 +18,7 @@ catalog:
   "typescript": "6.0.3"
   "tsx": "4.22.4"
 allowBuilds:
+  core-js: false
   esbuild: true
   lefthook: true
   sharp: true

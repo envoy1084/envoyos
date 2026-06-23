@@ -3,3 +3,9 @@ import { RootLayout } from "../layouts";
 ---
 
 <RootLayout>hello</RootLayout>
+
+<script is:inline>
+  document.addEventListener("DOMContentLoaded", function () {
+    window.posthog.capture("portfolio_viewed");
+  });
+</script>

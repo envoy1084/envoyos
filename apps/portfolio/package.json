@@ -17,6 +17,7 @@
     "@tailwindcss/vite": "4.3.1",
     "astro": "7.0.0",
     "astro-seo": "1.1.0",
+    "posthog-js": "^1.391.9",
     "react": "catalog:",
     "react-dom": "catalog:",
     "tailwindcss": "4.3.1",
