@@ -1,8 +1,7 @@
 minimumReleaseAge: 1440
 minimumReleaseAgeExclude:
-  - "@namera-ai/*"
-  - "@effect/*"
-  - "effect"
+  - "@astrojs/*"
+  - "astro"
 blockExoticSubdeps: true
 packages:
   - apps/*

@@ -1,21 +1,5 @@
 ---
-// oxlint-disable-next-line import/no-unassigned-import
-import "../styles/global.css";
-import { Font } from "astro:assets";
+import { RootLayout } from "../layouts";
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<Font cssVariable="--font-inter" preload />
-		<Font cssVariable="--font-geist-mono" preload />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1 class="text-7xl">Astro</h1>
-	</body>
-</html>
+<RootLayout>hello</RootLayout>

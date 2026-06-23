@@ -1,0 +1,30 @@
+---
+// oxlint-disable-next-line import/no-unassigned-import
+import "../styles/global.css";
+
+import { Font } from "astro:assets";
+import { RootSeo } from "../components/seo";
+---
+
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <RootSeo />
+    <Font cssVariable="--font-inter" preload />
+    <Font cssVariable="--font-geist-mono" preload />
+  </head>
+  <body>
+    <a
+      href="#main"
+      class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-100 focus:rounded-control focus:border focus:border-border-control focus:bg-surface-overlay focus:px-3 focus:py-2 focus:text-sm focus:text-text-default focus:shadow-menu"
+    >
+      Skip to content
+    </a>
+
+    <div class="root min-h-dvh bg-page-bg text-text-default">
+      <main id="main" class="min-h-[calc(100dvh-var(--header-height))]">
+        <slot />
+      </main>
+    </div>
+  </body>
+</html>
