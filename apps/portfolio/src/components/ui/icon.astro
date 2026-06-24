@@ -1,0 +1,62 @@
+---
+import icons from "virtual:astro-icon";
+
+import type { HTMLAttributes } from "astro/types";
+import type { Icon as IconName } from "virtual:astro-icon";
+
+type IconData = {
+  body: string;
+  height?: number;
+  left?: number;
+  top?: number;
+  width?: number;
+};
+
+type IconCollection = {
+  icons: Record<string, IconData>;
+};
+
+interface Props extends HTMLAttributes<"svg"> {
+  name: IconName;
+  size?: number | string;
+  title?: string;
+  desc?: string;
+}
+
+const { name, size, title, desc, ...props } = Astro.props;
+
+let [setName, iconName] = String(name).split(":");
+
+if (!iconName) {
+  iconName = setName;
+  setName = "local";
+}
+
+const iconCollections = icons as unknown as Record<string, IconCollection | undefined>;
+const icon = iconCollections[setName]?.icons[iconName];
+
+if (!icon) {
+  throw new Error(`Unable to locate "${name}" icon.`);
+}
+
+const left = icon.left ?? 0;
+const top = icon.top ?? 0;
+const iconWidth = icon.width ?? 24;
+const iconHeight = icon.height ?? 24;
+const width = props.width ?? size ?? iconWidth;
+const height = props.height ?? size ?? iconHeight;
+---
+
+<svg
+  {...props}
+  aria-hidden={title ? undefined : "true"}
+  data-icon={name}
+  height={height}
+  role={title ? "img" : undefined}
+  viewBox={`${left} ${top} ${iconWidth} ${iconHeight}`}
+  width={width}
+>
+  {title && <title>{title}</title>}
+  {desc && <desc>{desc}</desc>}
+  <Fragment set:html={icon.body} />
+</svg>

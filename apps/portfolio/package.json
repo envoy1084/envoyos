@@ -16,25 +16,23 @@
     "@astrojs/sitemap": "3.7.3",
     "@tailwindcss/vite": "4.3.1",
     "astro": "7.0.0",
+    "astro-icon": "1.1.5",
     "astro-seo": "1.1.0",
-    "clsx": "^2.1.1",
-    "motion": "^12.40.0",
-    "posthog-js": "^1.391.9",
+    "clsx": "2.1.1",
+    "motion": "12.40.0",
+    "posthog-js": "1.391.9",
     "react": "catalog:",
     "react-dom": "catalog:",
-    "tailwind-merge": "^3.6.0",
+    "tailwind-merge": "3.6.0",
     "tailwindcss": "4.3.1",
-    "three": "^0.184.0",
-    "wrangler": "4.103.0"
+    "three": "0.184.0"
   },
   "devDependencies": {
     "@types/react": "catalog:",
     "@types/react-dom": "catalog:",
-    "@types/three": "^0.184.1",
-    "typescript": "catalog:"
-  },
-  "overrides": {
-    "vite": "^7"
+    "@types/three": "0.184.1",
+    "typescript": "catalog:",
+    "wrangler": "4.103.0"
   },
   "engines": {
     "node": ">=22.12.0"

@@ -1,13 +1,14 @@
 ---
-import { Image } from "astro:assets";
-import EnvoyLogo from "../assets/images/envoy1084.png";
+import EnvoyLogo from "../assets/images/envoy1084.png?url";
 
-import DotMorphCanvas from "../components/visuals/dot-morph-canvas";
-import { RotatingTextAnimate } from "../components/ui/text-animate";
+import DotMorphCanvas from "@/components/visuals/dot-morph-canvas";
+import { RotatingTextAnimate } from "@/components/ui/text-animate";
 
-import MorphImage1 from "../assets/images/morph1.png?url";
-import MorphImage2 from "../assets/images/morph2.png?url";
-import MorphImage3 from "../assets/images/morph3.png?url";
+import Icon from "@/components/ui/icon.astro";
+
+import MorphImage1 from "@/assets/images/morph1.png?url";
+import MorphImage2 from "@/assets/images/morph2.png?url";
+import MorphImage3 from "@/assets/images/morph3.png?url";
 
 const morphSources = [MorphImage3, MorphImage1, MorphImage2];
 
@@ -19,13 +20,15 @@ const titles = ["Software Engineer", "Technical Writer"];
         <div
             class="size-11 flex items-center justify-center rounded-lg bg-brand/30 shadow-card"
         >
-            <Image
+            <img
                 src={EnvoyLogo}
                 class="size-10 rounded-md overflow-hidden"
                 alt="Envoy1084"
                 loading="eager"
                 fetchpriority="high"
                 decoding="async"
+                width="40"
+                height="40"
             />
         </div>
         <div class="flex flex-col gap-0.5">
@@ -35,8 +38,15 @@ const titles = ["Software Engineer", "Technical Writer"];
                 intervalMs={5000}
                 animation="cascade"
                 className="text-content-tertiary text-[14px] font-medium"
-                client:load
-            />
+                client:only="react"
+            >
+                <span
+                    slot="fallback"
+                    class="text-content-tertiary text-[14px] font-medium"
+                >
+                    {titles[0]}
+                </span>
+            </RotatingTextAnimate>
         </div>
         <p class="text-content-secondary font-medium text-base">
             I'm a developer and writer. I work at Namespace on a mission to name
@@ -44,5 +54,14 @@ const titles = ["Software Engineer", "Technical Writer"];
             beta learning my way through life.
         </p>
         <DotMorphCanvas sources={morphSources} client:only="react" />
+    </div>
+    <div class="flex flex-row gap-2">
+        <button
+            type="button"
+            class="inline-flex h-8 w-8 items-center justify-center rounded-lg font-medium text-muted-foreground transition-colors select-none hover:bg-primary/5 hover:text-foreground disabled:pointer-events-none disabled:opacity-50"
+            aria-label="GitHub"
+        >
+            <Icon name="github" size={18} />
+        </button>
     </div>
 </section>
