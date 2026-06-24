@@ -42,7 +42,7 @@ const DOT_MORPH_CONFIG = {
     aspectRatio: "15 / 4",
     background: "var(--app-bg, #08090a)",
     border: "var(--line-card, #252629)",
-    radius: "var(--radius-surface, 10px)",
+    radius: "8px",
     insetHighlight: "#ffffff0a",
   },
   images: {
@@ -60,7 +60,7 @@ const DOT_MORPH_CONFIG = {
   },
   timing: {
     holdMs: 6000,
-    morphMs: 1200,
+    morphMs: 800,
     morphWindow: 0.42,
   },
   renderer: {

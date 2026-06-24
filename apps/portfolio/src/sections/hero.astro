@@ -1,13 +1,17 @@
 ---
 import { Image } from "astro:assets";
 import EnvoyLogo from "../assets/images/envoy1084.png";
+
 import DotMorphCanvas from "../components/visuals/dot-morph-canvas";
+import { RotatingTextAnimate } from "../components/ui/text-animate";
 
 import MorphImage1 from "../assets/images/morph1.png?url";
 import MorphImage2 from "../assets/images/morph2.png?url";
 import MorphImage3 from "../assets/images/morph3.png?url";
 
-const morphSources = [MorphImage1, MorphImage2, MorphImage3];
+const morphSources = [MorphImage3, MorphImage1, MorphImage2];
+
+const titles = ["Software Engineer", "Technical Writer"];
 ---
 
 <section id="hero" class="">
@@ -19,17 +23,25 @@ const morphSources = [MorphImage1, MorphImage2, MorphImage3];
                 src={EnvoyLogo}
                 class="size-10 rounded-md overflow-hidden"
                 alt="Envoy1084"
+                loading="eager"
+                fetchpriority="high"
+                decoding="async"
             />
         </div>
         <div class="flex flex-col gap-0.5">
             <h1 class="text-xl font-semibold">Vedant Chainani</h1>
-            <p class="text-content-tertiary text-[14px] font-medium">
-                Software Engineer
-            </p>
+            <RotatingTextAnimate
+                items={titles}
+                intervalMs={5000}
+                animation="cascade"
+                className="text-content-tertiary text-[14px] font-medium"
+                client:load
+            />
         </div>
-        <p class="text-content-secondary font-medium">
-            I am a software engineer, ui/ux designer, product planner, problem
-            solver, mentor, forever student, minimalist, and eternal optimist.
+        <p class="text-content-secondary font-medium text-base">
+            I'm a developer and writer. I work at Namespace on a mission to name
+            a billion ethereum addresses. I've been coding for 3 years, still in
+            beta learning my way through life.
         </p>
         <DotMorphCanvas sources={morphSources} client:only="react" />
     </div>
