@@ -11,14 +11,4 @@
   "observability": {
     "enabled": true,
   },
-  "routes": [
-    {
-      "pattern": "envoy1084.xyz",
-      "custom_domain": true,
-    },
-    {
-      "pattern": "www.envoy1084.xyz",
-      "custom_domain": true,
-    },
-  ],
 }
