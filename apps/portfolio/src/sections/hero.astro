@@ -1,18 +1,10 @@
 ---
-import EnvoyLogo from "../assets/images/envoy1084.png?url";
-
 import DotMorphCanvas from "@/components/visuals/dot-morph-canvas";
-import { RotatingTextAnimate } from "@/components/ui/text-animate";
+import { TextCascade } from "@/components/ui/text-cascade";
 
 import Icon from "@/components/ui/icon.astro";
-
-import MorphImage1 from "@/assets/images/morph1.png?url";
-import MorphImage2 from "@/assets/images/morph2.png?url";
-import MorphImage3 from "@/assets/images/morph3.png?url";
-
-const morphSources = [MorphImage3, MorphImage1, MorphImage2];
-
-const titles = ["Software Engineer", "Technical Writer"];
+import { siteData } from "@/lib/data/site";
+import { Button } from "@/components/ui/button/base";
 ---
 
 <section id="hero" class="">
@@ -21,7 +13,7 @@ const titles = ["Software Engineer", "Technical Writer"];
             class="size-11 flex items-center justify-center rounded-lg bg-brand/30 shadow-card"
         >
             <img
-                src={EnvoyLogo}
+                src={siteData.logo.src}
                 class="size-10 rounded-md overflow-hidden"
                 alt="Envoy1084"
                 loading="eager"
@@ -32,36 +24,32 @@ const titles = ["Software Engineer", "Technical Writer"];
             />
         </div>
         <div class="flex flex-col gap-0.5">
-            <h1 class="text-xl font-semibold">Vedant Chainani</h1>
-            <RotatingTextAnimate
-                items={titles}
+            <h1 class="text-xl font-semibold">{siteData.name}</h1>
+            <TextCascade
+                items={siteData.titles}
                 intervalMs={5000}
-                animation="cascade"
                 className="text-content-tertiary text-[14px] font-medium"
                 client:only="react"
-            >
-                <span
-                    slot="fallback"
-                    class="text-content-tertiary text-[14px] font-medium"
-                >
-                    {titles[0]}
-                </span>
-            </RotatingTextAnimate>
+            />
         </div>
         <p class="text-content-secondary font-medium text-base">
-            I'm a developer and writer. I work at Namespace on a mission to name
-            a billion ethereum addresses. I've been coding for 3 years, still in
-            beta learning my way through life.
+            {siteData.description}
         </p>
-        <DotMorphCanvas sources={morphSources} client:only="react" />
+        <DotMorphCanvas sources={siteData.morphSources} client:only="react" />
     </div>
-    <div class="flex flex-row gap-2">
-        <button
-            type="button"
-            class="inline-flex h-8 w-8 items-center justify-center rounded-lg font-medium text-muted-foreground transition-colors select-none hover:bg-primary/5 hover:text-foreground disabled:pointer-events-none disabled:opacity-50"
-            aria-label="GitHub"
-        >
-            <Icon name="github" size={18} />
-        </button>
+    <div class="flex flex-row gap-2 py-4">
+        {
+            Object.values(siteData.links).map((link) => {
+                if ("url" in link) {
+                    return (
+                        <a href={link.url} target="_blank">
+                            <Button variant="ghost" size="icon">
+                                <Icon name={link.icon as any} class="size-4" />
+                            </Button>
+                        </a>
+                    );
+                }
+            })
+        }
     </div>
 </section>

@@ -1,6 +1,9 @@
 ---
 import { SEO } from "astro-seo";
-import { seoData } from "@/lib/data/seo";
+import { homeJsonLd, seoData } from "@/lib/data/seo";
+
+const jsonLd = JSON.stringify(homeJsonLd);
 ---
 
 <SEO {...seoData} />
+<script is:inline type="application/ld+json" set:html={jsonLd} />

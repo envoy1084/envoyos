@@ -27,5 +27,8 @@
   },
   "[svg]": {
     "editor.defaultFormatter": "jock.svg"
+  },
+  "[jsonc]": {
+    "editor.defaultFormatter": "oxc.oxc-vscode"
   }
 }

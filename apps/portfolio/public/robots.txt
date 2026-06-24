@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://envoy1084.xyz/sitemap-index.xml

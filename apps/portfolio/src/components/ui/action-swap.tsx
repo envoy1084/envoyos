@@ -1,12 +1,4 @@
-"use client";
-
-import {
-  useEffect,
-  useLayoutEffect,
-  useRef,
-  useState,
-  type ReactNode,
-} from "react";
+import { useLayoutEffect, useRef, useState, type ReactNode } from "react";
 
 import {
   AnimatePresence,
@@ -16,13 +8,8 @@ import {
   type Variants,
 } from "motion/react";
 
-import {
-  EASE_OUT,
-  EASE_OUT_CSS,
-  SPRING_PRESS,
-  SPRING_SWAP,
-} from "../../lib/ease";
-import { cn } from "../../lib/utils";
+import { EASE_OUT, EASE_OUT_CSS, SPRING_PRESS, SPRING_SWAP } from "@/lib/ease";
+import { cn } from "@/lib/utils";
 
 export type ActionSwapItem = {
   id: string;
@@ -62,14 +49,6 @@ export interface ActionSwapTextProps {
   children: ReactNode;
   animation?: ActionSwapAnimation;
   className?: string;
-}
-
-export interface RotatingTextAnimateProps extends Omit<
-  ActionSwapTextProps,
-  "children" | "value"
-> {
-  items: string[];
-  intervalMs?: number;
 }
 
 export interface ActionSwapIconProps {
@@ -173,21 +152,24 @@ const ICON_VARIANTS: Record<CoreAnimation, Variants> = {
 };
 
 const VARIANT_CLASS: Record<ActionSwapButtonVariant, string> = {
-  primary: "bg-primary text-primary-foreground hover:bg-primary/90",
-  secondary: "border border-border bg-card text-foreground hover:border-border",
+  primary:
+    "bg-brand text-content-primary shadow-control hover:bg-brand-hover active:bg-brand-active",
+  secondary:
+    "border border-border-control bg-surface-raised text-content-secondary shadow-control hover:border-line-control-hover hover:bg-surface-hover hover:text-content-primary active:bg-surface-active",
   outline:
-    "border border-border bg-transparent text-foreground hover:bg-primary/5",
-  ghost: "text-muted-foreground hover:bg-primary/5 hover:text-foreground",
+    "border border-border-control bg-transparent text-content-secondary hover:border-line-control-hover hover:bg-surface-hover hover:text-content-primary active:bg-surface-active",
+  ghost:
+    "text-content-tertiary hover:bg-surface-hover hover:text-content-secondary active:bg-surface-active",
 };
 
 const SIZE_CLASS: Record<ActionSwapButtonSize, string> = {
-  sm: "h-8 gap-1.5 rounded-full px-3 text-xs",
-  md: "h-10 gap-2 rounded-full px-4 text-sm",
-  lg: "h-12 gap-2.5 rounded-full px-5 text-base",
-  icon: "h-10 w-10 rounded-full",
+  sm: "h-8 gap-1.5 rounded-control px-3 text-xs",
+  md: "h-10 gap-2 rounded-control px-4 text-sm",
+  lg: "h-12 gap-2.5 rounded-control px-5 text-base",
+  icon: "h-10 w-10 rounded-control",
 };
 
-export function TextAnimate({
+export function ActionSwapText({
   value,
   children,
   animation = "blur",
@@ -276,43 +258,6 @@ export function TextAnimate({
         </AnimatePresence>
       )}
     </span>
-  );
-}
-
-export function RotatingTextAnimate({
-  items,
-  intervalMs = 5000,
-  animation = "blur",
-  className,
-}: RotatingTextAnimateProps) {
-  const labels = items.filter((item) => item.trim().length > 0);
-  const [activeIndex, setActiveIndex] = useState(0);
-  const activeLabel = labels[activeIndex % Math.max(1, labels.length)] ?? "";
-
-  useEffect(() => {
-    if (labels.length <= 1) {
-      return;
-    }
-
-    const interval = window.setInterval(() => {
-      setActiveIndex((currentIndex) => (currentIndex + 1) % labels.length);
-    }, intervalMs);
-
-    return () => window.clearInterval(interval);
-  }, [intervalMs, labels.length]);
-
-  if (!activeLabel) {
-    return null;
-  }
-
-  return (
-    <TextAnimate
-      value={`${activeIndex}-${activeLabel}`}
-      animation={animation}
-      className={className}
-    >
-      {activeLabel}
-    </TextAnimate>
   );
 }
 
@@ -426,9 +371,9 @@ export function ActionSwapButton({
         </ActionSwapIcon>
       ) : null}
       {!iconOnly ? (
-        <TextAnimate value={activeItem.id} animation={animation}>
+        <ActionSwapText value={activeItem.id} animation={animation}>
           {activeItem.label}
-        </TextAnimate>
+        </ActionSwapText>
       ) : null}
     </motion.button>
   );
