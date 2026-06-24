@@ -27,7 +27,12 @@ jobs:
 
       - run: pnpm install --frozen-lockfile
 
-      - run: pnpm --filter @envoyos/portfolio build
+      - name: Build portfolio
+        run: pnpm --filter @envoyos/portfolio build
+        env:
+          PUBLIC_POSTHOG_PROJECT_TOKEN: ${{ secrets.PUBLIC_POSTHOG_PROJECT_TOKEN }}
+          PUBLIC_POSTHOG_API_HOST: ${{ vars.PUBLIC_POSTHOG_API_HOST }}
+          PUBLIC_POSTHOG_UI_HOST: ${{ vars.PUBLIC_POSTHOG_UI_HOST }}
 
       - name: Deploy to Cloudflare Workers
         run: pnpm exec wrangler deploy
