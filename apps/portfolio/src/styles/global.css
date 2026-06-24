@@ -121,7 +121,7 @@
   --duration-normal: var(--duration-linear);
   --duration-slow: var(--duration-linear-slow);
 
-  --radius: 0.7rem; /* Legacy base radius for Tailwind radius scale exports. */
+  --radius: 0.625rem; /* Legacy base radius for Tailwind radius scale exports. */
   --radius-control: 8px; /* Inputs, select triggers, menu items, buttons, and compact controls. */
   --radius-surface: 10px; /* Cards, grouped rows, and contained repeated surfaces. */
   --radius-popover: 12px; /* Popovers, dropdown panels, select panels, dialogs, and overlays. */

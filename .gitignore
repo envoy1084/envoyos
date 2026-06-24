@@ -157,3 +157,5 @@ db.sqlite
 
 # .repos
 .repos
+
+.codex-artifacts

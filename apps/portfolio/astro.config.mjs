@@ -6,6 +6,8 @@ import tailwindcss from "@tailwindcss/vite";
 import { defineConfig, fontProviders } from "astro/config";
 
 export default defineConfig({
+  prefetch: true,
+  trailingSlash: "ignore",
   site: "https://envoy1084.xyz",
   fonts: [
     {

@@ -24,7 +24,9 @@ import PostHog from "./posthog.astro";
     </a>
 
     <main id="main" class="root">
-      <slot />
+      <div class="max-w-sm mx-auto my-[10dvh] px-4">
+        <slot />
+      </div>
     </main>
   </body>
 </html>

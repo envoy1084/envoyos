@@ -21,11 +21,13 @@
     "react": "catalog:",
     "react-dom": "catalog:",
     "tailwindcss": "4.3.1",
+    "three": "^0.184.0",
     "wrangler": "4.103.0"
   },
   "devDependencies": {
     "@types/react": "catalog:",
     "@types/react-dom": "catalog:",
+    "@types/three": "^0.184.1",
     "typescript": "catalog:"
   },
   "overrides": {
